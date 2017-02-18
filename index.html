@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="myApp" ng-controller="myCtrl">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="author" content="John F. Black">
+        <meta name="description" content="Test Site for John F. Black">
+        <meta name="keywords" content="John, John Black, John F Black, John F. Black, John Francis Black, Test Site, Test, Synacor, Facebook, NBC, NBCUniversal, LocalEdge, Buffalo, New York, New York City, NYC, Grand Island, University at Buffalo, UB, Technical Support, Ad Operations, AdOps, AdTech">
+        <title>TitanJohn</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+      <div class="jumbotron container">
+        <div class="timeline">
+          <hr>
+        </div>
+      </div>
+      <div class="jumbotron container">
+        <form class="classAdd" action="add.php" method="post">
+          <fieldset>
+            <legend>Class Info</legend>
+            <label for="className">Class Name:</label>
+            <input type="text" name="className" id="className"><br>
+            <label for="classLink">Class Link:</label>
+            <input type="url" name="classLink" id="classLink"><br>
+            <label for="siteName">Site Name:</label>
+            <input type="text" name="siteName" id="siteName"><br>
+            <label for="category">Category:</label>
+            <input type="text" name="category" id="category"><br>
+            <label for="completeDate">Complete Date:</label>
+            <input type="month" name="completeDate" id="completeDate"><br>
+            <label for="recommend">Recommend:</label>
+            <label for="recommend1">Yes</label>
+            <input type="radio" name="recommend" id="recommend1">
+            <label for="recommend2">No</label>
+            <input type="radio" name="recommend" id="recommend2"><br>
+            <input type="submit" value="Add">
+            <input type="reset">
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="jumbotron container">
+        <table id="classTable">
+          <tr>
+            <th>Class Name</th>
+            <th>Site Name</th>
+            <th>Category</th>
+            <th>Complete Date</th>
+            <th>Recommended</th>
+          </tr>
+          <tr>
+            <td>Cron Jobs</td>
+            <td>Udemy</td>
+            <td>Scripting</td>
+            <td>02-18-2017</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Beginners PHP</td>
+            <td>Codecademy</td>
+            <td>PHP</td>
+            <td>02-20-2017</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Advanced HTML5</td>
+            <td>Codecademy</td>
+            <td>HTML5</td>
+            <td>02-25-2017</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Advanced CSS</td>
+            <td>Udemy</td>
+            <td>CSS3</td>
+            <td>02-27-2017</td>
+            <td>Yes</td>
+          </tr>
+        </table>
+      </div>
+    </body>
+
+</html>
