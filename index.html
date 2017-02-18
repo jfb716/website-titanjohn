@@ -8,10 +8,10 @@
         <meta name="description" content="Test Site for John F. Black">
         <meta name="keywords" content="John, John Black, John F Black, John F. Black, John Francis Black, Test Site, Test, Synacor, Facebook, NBC, NBCUniversal, LocalEdge, Buffalo, New York, New York City, NYC, Grand Island, University at Buffalo, UB, Technical Support, Ad Operations, AdOps, AdTech">
         <title>TitanJohn</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="script.js"></script>
     </head>
 
@@ -26,22 +26,29 @@
           <fieldset>
             <legend>Class Info</legend>
             <label for="class">Class Name:</label>
-            <input type="text" name="class" id="class"><br>
+            <input type="text" name="class" id="class" required><br>
             <label for="classlink">Class Link:</label>
-            <input type="url" name="classlink" id="classlink"><br>
+            <input type="url" name="classlink" id="classlink" required><br>
             <label for="site">Site Name:</label>
-            <input type="text" name="site" id="site"><br>
+            <input type="text" name="site" id="site" required><br>
             <label for="category">Category:</label>
-            <input type="text" name="category" id="category"><br>
-            <label for="complete">Complete Date:</label>
-            <input type="month" name="complete" id="complete"><br>
+            <input type="text" name="category" id="category" required><br>
+            <label for="complete">Complete Year:</label>
+            <select id="complete" name="complete" required>
+              <option value="">---</option>
+              <option value="2015">2015</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+            </select><br>
             <label for="recommend">Recommend:</label>
-            <label for="recommend1">Yes</label>
-            <input type="radio" name="recommend" id="recommend1">
-            <label for="recommend2">No</label>
-            <input type="radio" name="recommend" id="recommend2"><br>
-            <input type="submit" value="Add">
-            <input type="reset">
+            <select id="recommend" name="recommend" required>
+              <option value="">---</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select><br>
+            <input type="submit" value="Add" class="btn btn-primary">
+            <input type="reset" class="btn btn-primary">
           </fieldset>
         </form>
       </div>
