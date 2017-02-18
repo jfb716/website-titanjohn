@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
 
+
           jaData();
           $('.classAdd').submit(function(e){
             var jData = $('.classAdd');
