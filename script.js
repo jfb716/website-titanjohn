@@ -2,35 +2,28 @@
 $(document).ready(function(){
 
 
-          jaData();
+          tableData();
           $('.classAdd').submit(function(e){
-            var jData = $('.classAdd');
-            console.log(jData);
+            var writeData = $('.classAdd');
+            console.log(writeData);
             $.ajax({
-              type: jData.attr('method'),
-              url: jData.attr('action'),
-              data: jData.serialize(),
+              type: writeData.attr('method'),
+              url: writeData.attr('action'),
+              data: writeData.serialize(),
               success: function(response){
                 console.log(response);
-                jaData();
+                tableData();
                 $('.classAdd')[0].reset();
               }
             });
             e.preventDefault();
           });
 
-          function jaData(){
+          function tableData(){
             $.ajax({
               type: 'GET',
-              url: 'json.php',
+              url: 'classTimeline.php',
               success: function(response){
-
-                  $('#classTable tr').not(':first').remove();
-                  var html = '';
-                  for(var i = 0; i < response.length; i++)
-                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
-                  $('#classTable tbody').append(html);
-
 
                   $('.list2015 li').remove();
                   var html2 = '';
@@ -63,6 +56,20 @@ $(document).ready(function(){
                       $('.list2018').append(html5);
 
 
+              }
+            });
+
+
+            $.ajax({
+              type: 'GET',
+              url: 'pageOne.php',
+              success: function(response){
+
+                  $('#classTable tr').not(':first').remove();
+                  var html = '';
+                  for(var i = 0; i < response.length; i++)
+                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
+                  $('#classTable tbody').append(html);
               }
             });
           }
