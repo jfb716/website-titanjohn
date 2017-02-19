@@ -1,7 +1,6 @@
 
 $(document).ready(function(){
 
-
           tableData();
           $('.classAdd').submit(function(e){
             var writeData = $('.classAdd');
@@ -25,37 +24,31 @@ $(document).ready(function(){
               url: 'classTimeline.php',
               success: function(response){
 
-                  $('.list2015 li').remove();
-                  var html2 = '';
+                $('.card-block').each(function(){
+                  $(this).find('li').remove();
+                  var text = $(this).find('h3').text();
+                  switch (text) {
+                    case "2015":
+                      styleAdd = "success";
+                      break;
+                    case "2016":
+                      styleAdd = "info";
+                      break;
+                    case "2017":
+                      styleAdd = "warning";
+                      break;
+                    case "2018":
+                      styleAdd = "danger";
+                      break;
+                    default:
+                      styleAdd = "success";
+                  }
+                  var html = '';
                   for(var i = 0; i < response.length; i++)
-                  if (response[i].complete === '2015')
-                      html2 += '<li class="list-group-item list-group-item-success">' + response[i].class + '</li>';
-                      $('.list2015').append(html2);
-
-
-                  $('.list2016 li').remove();
-                  var html3 = '';
-                  for(var i = 0; i < response.length; i++)
-                  if (response[i].complete === '2016')
-                      html3 += '<li class="list-group-item list-group-item-info">' + response[i].class + '</li>';
-                      $('.list2016').append(html3);
-
-                  $('.list2017 li').remove();
-                  var html4 = '';
-                  for(var i = 0; i < response.length; i++)
-                  if (response[i].complete === '2017')
-                      html4 += '<li class="list-group-item list-group-item-warning">' + response[i].class + '</li>';
-                      $('.list2017').append(html4);
-
-
-                  $('.list2018 li').remove();
-                  var html5 = '';
-                  for(var i = 0; i < response.length; i++)
-                  if (response[i].complete === '2018')
-                      html5 += '<li class="list-group-item list-group-item-danger">' + response[i].class + '</li>';
-                      $('.list2018').append(html5);
-
-
+                  if (response[i].complete === text)
+                      html += '<li class="list-group-item list-group-item-' + styleAdd + '">' + response[i].class + '</li>';
+                      $('.list' + text).append(html);
+                });
               }
             });
 
@@ -74,24 +67,12 @@ $(document).ready(function(){
             });
           }
 
-          $('.pageOne').click(function(){
-            $.ajax({
-              type: 'GET',
-              url: 'json.php',
-              success: function(response){
-                  $('#classTable tr').not(':first').remove();
-                  var html = '';
-                  for(var i = 0; i < response.length; i++)
-                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
-                  $('#classTable tbody').append(html);
-              }
-            });
-          });
 
-          $('.pageTwo').click(function(){
+        $('.pagination').click(function(event){
+          var pageInsert = event.target.id;
             $.ajax({
               type: 'GET',
-              url: 'pageTwo.php',
+              url: pageInsert + '.php',
               success: function(response){
                   $('#classTable tr').not(':first').remove();
                   var html = '';
@@ -100,104 +81,6 @@ $(document).ready(function(){
                   $('#classTable tbody').append(html);
               }
             });
-          });
-
-          $('.pageThree').click(function(){
-            $.ajax({
-              type: 'GET',
-              url: 'pageThree.php',
-              success: function(response){
-                  $('#classTable tr').not(':first').remove();
-                  var html = '';
-                  for(var i = 0; i < response.length; i++)
-                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
-                  $('#classTable tbody').append(html);
-              }
-            });
-          });
-
-          $('.pageFour').click(function(){
-            $.ajax({
-              type: 'GET',
-              url: 'pageFour.php',
-              success: function(response){
-                  $('#classTable tr').not(':first').remove();
-                  var html = '';
-                  for(var i = 0; i < response.length; i++)
-                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
-                  $('#classTable tbody').append(html);
-              }
-            });
-          });
-
-          $('.pageFive').click(function(){
-            $.ajax({
-              type: 'GET',
-              url: 'pageFive.php',
-              success: function(response){
-                  $('#classTable tr').not(':first').remove();
-                  var html = '';
-                  for(var i = 0; i < response.length; i++)
-                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
-                  $('#classTable tbody').append(html);
-              }
-            });
-          });
-
-          $('.pageSix').click(function(){
-            $.ajax({
-              type: 'GET',
-              url: 'pageSix.php',
-              success: function(response){
-                  $('#classTable tr').not(':first').remove();
-                  var html = '';
-                  for(var i = 0; i < response.length; i++)
-                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
-                  $('#classTable tbody').append(html);
-              }
-            });
-          });
-
-          $('.pageSeven').click(function(){
-            $.ajax({
-              type: 'GET',
-              url: 'pageSeven.php',
-              success: function(response){
-                  $('#classTable tr').not(':first').remove();
-                  var html = '';
-                  for(var i = 0; i < response.length; i++)
-                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
-                  $('#classTable tbody').append(html);
-              }
-            });
-          });
-
-          $('.pageEight').click(function(){
-            $.ajax({
-              type: 'GET',
-              url: 'pageEight.php',
-              success: function(response){
-                  $('#classTable tr').not(':first').remove();
-                  var html = '';
-                  for(var i = 0; i < response.length; i++)
-                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
-                  $('#classTable tbody').append(html);
-              }
-            });
-          });
-
-          $('.pageNine').click(function(){
-            $.ajax({
-              type: 'GET',
-              url: 'pageNine.php',
-              success: function(response){
-                  $('#classTable tr').not(':first').remove();
-                  var html = '';
-                  for(var i = 0; i < response.length; i++)
-                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
-                  $('#classTable tbody').append(html);
-              }
-            });
-          });
+        });
 
 });
