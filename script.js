@@ -28,8 +28,8 @@ $(document).ready(function(){
                   $('#classTable tr').not(':first').remove();
                   var html = '';
                   for(var i = 0; i < response.length; i++)
-                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td><td>' + response[i].recommend + '</td></tr>';
-                  $('#classTable tr').first().after(html);
+                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
+                  $('#classTable tbody').append(html);
 
 
                   $('.list2015 li').remove();
@@ -62,8 +62,135 @@ $(document).ready(function(){
                       html5 += '<li class="list-group-item list-group-item-danger">' + response[i].class + '</li>';
                       $('.list2018').append(html5);
 
+
               }
             });
           }
+
+          $('.pageOne').click(function(){
+            $.ajax({
+              type: 'GET',
+              url: 'json.php',
+              success: function(response){
+                  $('#classTable tr').not(':first').remove();
+                  var html = '';
+                  for(var i = 0; i < response.length; i++)
+                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
+                  $('#classTable tbody').append(html);
+              }
+            });
+          });
+
+          $('.pageTwo').click(function(){
+            $.ajax({
+              type: 'GET',
+              url: 'pageTwo.php',
+              success: function(response){
+                  $('#classTable tr').not(':first').remove();
+                  var html = '';
+                  for(var i = 0; i < response.length; i++)
+                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
+                  $('#classTable tbody').append(html);
+              }
+            });
+          });
+
+          $('.pageThree').click(function(){
+            $.ajax({
+              type: 'GET',
+              url: 'pageThree.php',
+              success: function(response){
+                  $('#classTable tr').not(':first').remove();
+                  var html = '';
+                  for(var i = 0; i < response.length; i++)
+                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
+                  $('#classTable tbody').append(html);
+              }
+            });
+          });
+
+          $('.pageFour').click(function(){
+            $.ajax({
+              type: 'GET',
+              url: 'pageFour.php',
+              success: function(response){
+                  $('#classTable tr').not(':first').remove();
+                  var html = '';
+                  for(var i = 0; i < response.length; i++)
+                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
+                  $('#classTable tbody').append(html);
+              }
+            });
+          });
+
+          $('.pageFive').click(function(){
+            $.ajax({
+              type: 'GET',
+              url: 'pageFive.php',
+              success: function(response){
+                  $('#classTable tr').not(':first').remove();
+                  var html = '';
+                  for(var i = 0; i < response.length; i++)
+                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
+                  $('#classTable tbody').append(html);
+              }
+            });
+          });
+
+          $('.pageSix').click(function(){
+            $.ajax({
+              type: 'GET',
+              url: 'pageSix.php',
+              success: function(response){
+                  $('#classTable tr').not(':first').remove();
+                  var html = '';
+                  for(var i = 0; i < response.length; i++)
+                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
+                  $('#classTable tbody').append(html);
+              }
+            });
+          });
+
+          $('.pageSeven').click(function(){
+            $.ajax({
+              type: 'GET',
+              url: 'pageSeven.php',
+              success: function(response){
+                  $('#classTable tr').not(':first').remove();
+                  var html = '';
+                  for(var i = 0; i < response.length; i++)
+                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
+                  $('#classTable tbody').append(html);
+              }
+            });
+          });
+
+          $('.pageEight').click(function(){
+            $.ajax({
+              type: 'GET',
+              url: 'pageEight.php',
+              success: function(response){
+                  $('#classTable tr').not(':first').remove();
+                  var html = '';
+                  for(var i = 0; i < response.length; i++)
+                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
+                  $('#classTable tbody').append(html);
+              }
+            });
+          });
+
+          $('.pageNine').click(function(){
+            $.ajax({
+              type: 'GET',
+              url: 'pageNine.php',
+              success: function(response){
+                  $('#classTable tr').not(':first').remove();
+                  var html = '';
+                  for(var i = 0; i < response.length; i++)
+                              html += '<tr><td>' + response[i].class + '</td><td>' + response[i].site + '</td><td>' + response[i].category + '</td><td>' + response[i].complete + '</td></tr>';
+                  $('#classTable tbody').append(html);
+              }
+            });
+          });
 
 });

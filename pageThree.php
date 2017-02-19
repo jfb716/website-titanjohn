@@ -3,7 +3,7 @@ $conn = mysqli_connect("localhost", "jfblack", "bull1607", "john_master") or die
 
 header('content-type: application/json');
 
-$sql = "select * from classes limit 10";
+$sql = "select * from classes limit 10 offset 20";
 $result = mysqli_query($conn, $sql) or die ("Error".mysqli_error($conn));
 $myArray = array();
 while ($row = mysqli_fetch_assoc($result)) {
