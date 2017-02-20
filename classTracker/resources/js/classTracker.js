@@ -27,7 +27,7 @@ $(document).ready(function(){
           //AJAX GET call to get the full database data
             $.ajax({
               type: 'GET',
-              url: '/resources/php/classTracker/classTimeline.php',
+              url: '/classTracker/resources/php/classTimeline.php',
               success: function(response){
               //Remove all divs in the skillsList
                 $('.skillsList div').remove();
@@ -93,7 +93,7 @@ $(document).ready(function(){
 
             $.ajax({
               type: 'GET',
-              url: '/resources/php/classTracker/pageOne.php',
+              url: '/classTracker/resources/php/pageOne.php',
               success: function(response){
 
                   $('#classTable tr').not(':first').remove();
@@ -110,7 +110,7 @@ $(document).ready(function(){
           var pageInsert = event.target.id;
             $.ajax({
               type: 'GET',
-              url: '/resources/php/classTracker/' + pageInsert + '.php',
+              url: '/classTracker/resources/php/' + pageInsert + '.php',
               success: function(response){
                   $('#classTable tr').not(':first').remove();
                   var html = '';
