@@ -1,3 +1,16 @@
 body {
   background-color: #292b2c;
 }
+
+.initialism {
+  font-size: 10px;
+  padding: 1px 2px;
+}
+
+.card {
+  margin: 4px;
+}
+
+.card-block {
+  padding: 5px;
+}

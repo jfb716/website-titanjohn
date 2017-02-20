@@ -24,7 +24,30 @@ $(document).ready(function(){
               url: 'classTimeline.php',
               success: function(response){
 
-                $('.card-block').each(function(){
+                $('#category').find('option').not(':first').each(function(){
+                  var className = $(this).text();
+                  counter = function(classCat){
+                    count = 0;
+                    for( var i = 0; i < response.length; i++)
+                      if (response[i].category === classCat){
+                        count++;
+                      }
+                      return count;
+                  };
+                  var number = counter(className);
+                  console.log(number);
+                  var html = '';
+                  if(number > 2){
+                    badgeClass = "success";
+                  }
+                  else{
+                    badgeClass = "warning";
+                  };
+                  html += '<div class="col lead">' + '<span class="badge badge-' + badgeClass + '">' + className + ' ' + '<span class="badge badge-default">' + number + '</span>' + '</span>' + '</div>';
+                  $('.skillsList').append(html);
+                });
+
+                $('.timeline .card-block').each(function(){
                   $(this).find('li').remove();
                   var text = $(this).find('h3').text();
                   switch (text) {
@@ -46,8 +69,15 @@ $(document).ready(function(){
                   var html = '';
                   for(var i = 0; i < response.length; i++)
                   if (response[i].complete === text)
-                      html += '<li class="list-group-item list-group-item-' + styleAdd + '">' + response[i].class + '</li>';
-                      $('.list' + text).append(html);
+                      html += '<li class="list-group-item list-group-item-action initialism list-group-item-' + styleAdd + '">' + response[i].class + '</li>';
+                      $(this).find('.list' + text).append(html);
+                });
+
+                $('.timeline .card').each(function(){
+                  listSize = $(this).find('li').length;
+                  var html2 = '';
+                  html2 += '<div class="card-footer lead"><small class="text-muted h5">Total Classes: ' + '<span class="badge badge-warning badge-pill">' + listSize + '</span></small></div>'
+                  $(this).find('.card-block').parent().append(html2);
                 });
               }
             });
