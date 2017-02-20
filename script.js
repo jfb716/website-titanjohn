@@ -1,29 +1,37 @@
 
 $(document).ready(function(){
 
+        //On docuement ready call the tableData function to populate table
           tableData();
+
+        //On document ready create a function listening for the submit button click event
           $('.classAdd').submit(function(e){
             var writeData = $('.classAdd');
-            console.log(writeData);
+          //AJAX POST call to write to the database on form submit
             $.ajax({
               type: writeData.attr('method'),
               url: writeData.attr('action'),
               data: writeData.serialize(),
               success: function(response){
-                console.log(response);
+              //Once data is successfully written to the database call the table data function to refresh the table on the page
                 tableData();
+              //Reset the form after click and successfull database write
                 $('.classAdd')[0].reset();
               }
             });
             e.preventDefault();
           });
 
+        //Create a function to populate the table on the page
           function tableData(){
+          //AJAX GET call to get the full database data
             $.ajax({
               type: 'GET',
               url: 'classTimeline.php',
               success: function(response){
-
+              //Remove all divs in the skillsList
+                $('.skillsList div').remove();
+              //Create a function that finds all option tags in category id except the first and iterates through them
                 $('#category').find('option').not(':first').each(function(){
                   var className = $(this).text();
                   counter = function(classCat){
@@ -35,7 +43,6 @@ $(document).ready(function(){
                       return count;
                   };
                   var number = counter(className);
-                  console.log(number);
                   var html = '';
                   if(number > 2){
                     badgeClass = "success";
@@ -43,7 +50,7 @@ $(document).ready(function(){
                   else{
                     badgeClass = "warning";
                   };
-                  html += '<div class="col lead">' + '<span class="badge badge-' + badgeClass + '">' + className + ' ' + '<span class="badge badge-default">' + number + '</span>' + '</span>' + '</div>';
+                  html += '<div class="col lead">' + '<span class="badge badge-pill badge-' + badgeClass + '">' + className + ' ' + '<span class="badge badge-default badge-pill">' + number + '</span>' + '</span>' + '</div>';
                   $('.skillsList').append(html);
                 });
 
@@ -74,6 +81,7 @@ $(document).ready(function(){
                 });
 
                 $('.timeline .card').each(function(){
+                  $(this).find('.card-footer').remove();
                   listSize = $(this).find('li').length;
                   var html2 = '';
                   html2 += '<div class="card-footer lead"><small class="text-muted h5">Total Classes: ' + '<span class="badge badge-warning badge-pill">' + listSize + '</span></small></div>'
