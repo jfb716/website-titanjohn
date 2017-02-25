@@ -9,6 +9,7 @@ $(document).ready(function(){
               url: './resources/php/booksPull.php',
               success: function(response){
                 $('.books div').remove();
+                $('.books br').remove();
                 console.log(response);
                   var rowNum = 1;
                   function rowAdd(){
