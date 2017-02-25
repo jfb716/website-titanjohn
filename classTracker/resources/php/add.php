@@ -1,8 +1,8 @@
 <?php
-$conn = new mysqli("localhost","jfblack","bull1607","john_master");
+$conn = new mysqli("localhost","titanjohn","bull1607","titanJohn");
 if($conn->connect_error){die("error");}
 
-$sql = $conn->prepare("INSERT INTO classes (class, site, category, complete) VALUES (?,?,?,?)");
+$sql = $conn->prepare("INSERT INTO classTracker (class, site, category, complete) VALUES (?,?,?,?)");
 $sql->bind_param("sssi",$_POST['class'],$_POST['site'], $_POST['category'], $_POST['complete']);
 
 if($sql->execute()){
