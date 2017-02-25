@@ -10,10 +10,24 @@ $(document).ready(function(){
               success: function(response){
                 $('.books div').remove();
                 console.log(response);
-                  var html = '';
-                  for(var i = 0; i < response.length; i++)
-                    html += '<div class="card card-inverse">' + '<div class="card-header">' + response[i].cat + '</div>' + '<div class="card-block">' + '<h4 class="card-title">' +  response[i].title + '</h4>' + '<p class="card-text">' + response[i].auth + '</p>' + '<p class="card-text">' + response[i].byear + '</p>' + '<p class="card-text">' + '<small class="text-muted">' + response[i].isbn + '</small>' + '</p>' + '</div>' + '<div class="card-footer">' + '<small class="text-muted">' + response[i].ryear + '</small>' + '</div>' + '</div>';
-                  $('.books').append(html);
+                  var rowNum = 1;
+                  function rowAdd(){
+                    rowNum += 1;
+                  };
+
+                  var html2 = '';
+                  for(var i = 0; i < response.length; i++){
+                    if(i % 3 === 0){
+                      var html1 = '<div class="row book' + rowNum + '"></div><br>';
+                      $('.books').append(html1);
+                    };
+                    html2 = '<div class="col-sm-4">' + '<div class="card card-inverse" style="background-color: #333; border-color: #333; "width: 20rem;"">' + '<div class="card-header text-center">' + response[i].cat + '</div>' + '<div class="card-block">' + '<h4 class="card-title">' +  response[i].title + '</h4>' + '<p class="card-text">' + response[i].auth + '</p>' + '<p class="card-text">' + 'Published: ' + response[i].byear + '</p>' + '<p class="card-text">' + '<small class="text-muted">' + 'ISBN: ' + response[i].isbn + '</small>' + '</p>' + '</div>' + '<div class="card-footer text-center">' + response[i].ryear + '</div>' + '</div>' + '</div>';
+                    $('.book' + rowNum).append(html2);
+                    if((i + 1) % 3 === 0){
+                      rowAdd();
+                    };
+                };
+
               }
             });
           };
