@@ -33,4 +33,19 @@ $(document).ready(function(){
           };
 
 
+          $('.bookAdd').submit(function(e){
+            var writeData = $('.bookAdd');
+            $.ajax({
+              type: writeData.attr('method'),
+              url: writeData.attr('action'),
+              data: writeData.serialize(),
+              success: function(response){
+                $('.bookAdd')[0].reset();
+                bookData();
+              }
+            });
+            e.preventDefault();
+          });
+
+
 });

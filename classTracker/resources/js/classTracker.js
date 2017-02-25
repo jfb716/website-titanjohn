@@ -1,21 +1,14 @@
 
 $(document).ready(function(){
-
-        //On docuement ready call the tableData function to populate table
           tableData();
-
-        //On document ready create a function listening for the submit button click event
           $('.classAdd').submit(function(e){
             var writeData = $('.classAdd');
-          //AJAX POST call to write to the database on form submit
             $.ajax({
               type: writeData.attr('method'),
               url: writeData.attr('action'),
               data: writeData.serialize(),
               success: function(response){
-              //Once data is successfully written to the database call the table data function to refresh the table on the page
                 tableData();
-              //Reset the form after click and successfull database write
                 $('.classAdd')[0].reset();
               }
             });
