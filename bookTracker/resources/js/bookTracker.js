@@ -10,13 +10,11 @@ $(document).ready(function(){
               success: function(response){
                 $('.books div').remove();
                 $('.books br').remove();
-                console.log(response);
                   var rowNum = 1;
                   function rowAdd(){
                     rowNum += 1;
                   };
 
-                  var html2 = '';
                   for(var i = 0; i < response.length; i++){
                     if(i % 3 === 0){
                       var html1 = '<div class="row book' + rowNum + '"></div><br>';
