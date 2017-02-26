@@ -1,6 +1,9 @@
 
 $(document).ready(function(){
-
+          var key = localStorage.getItem("key");
+          if(key != 'black'){
+            $('.btn').remove();
+          };
           bookData();
 
           function bookData(){

@@ -1,6 +1,8 @@
-
 $(document).ready(function(){
-
+          var key = localStorage.getItem("key");
+          if(key != 'black'){
+            $('.btn').remove();
+          };
           codeSamples();
 
           function codeSamples(){

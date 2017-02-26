@@ -1,5 +1,10 @@
 
 $(document).ready(function(){
+          var key = localStorage.getItem("key");
+          if(key != 'black'){
+            $('.btn').remove();
+          };
+
           tableData();
           $('.classAdd').submit(function(e){
             var writeData = $('.classAdd');
