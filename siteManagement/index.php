@@ -12,6 +12,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/siteManagement/resources/css/siteManagement.css">
+        <script src="/siteManagement/resources/js/siteManage.js">
+
+        </script>
     </head>
     <header>
       <div class="container">
@@ -50,7 +53,44 @@
       </div>
     </header>
     <body>
+      <div class="jumbotron container">
+        <table class="table table-striped table-inverse">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Site Name</th>
+              <th>Site URL</th>
+              <th>Current Use</th>
+              <th>Future Use</th>
+            </tr>
+          </thead>
+            <tbody class="sites">
+              <?php
+                $conn = mysqli_connect("localhost","titanjohn","bull1607","titanJohn") or die ("Error".mysqli_error($conn));
 
+                $result = mysqli_query($conn,"SELECT * FROM siteManage");
+                $all_property = array();
+
+                while ($property = mysqli_fetch_field($result)) {
+                  array_push($all_property, $property->name);
+                }
+
+                while ($row = mysqli_fetch_array($result)) {
+                  echo "<tr>";
+                  foreach ($all_property as $item) {
+                      echo '<td contenteditable="true" id="test">' . $row[$item] . '</td>';
+                  }
+                  echo '</tr>';
+                }
+                echo "</table>";
+
+
+                mysqli_close($con);
+                ?>
+
+            </tbody>
+        </table>
+      </div>
     </body>
 
 </html>

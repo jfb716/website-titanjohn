@@ -4,8 +4,41 @@ $(document).ready(function(){
           if(key != 'black'){
             $('.btn').remove();
           };
-
+          yearList();
+          catList();
           tableData();
+
+          function yearList(){
+            $.ajax({
+              type: 'GET',
+              url: './resources/php/yearPull.php',
+              success: function(response){
+                $('.yearList option').not(':first').remove();
+                  for(var i = 0; i < response.length; i++){
+                    html = '<option value="' + response[i].year + '">' + response[i].year + '</option>';
+                    $('.yearList').append(html);
+                };
+
+              }
+            });
+          };
+
+          function catList(){
+            $.ajax({
+              type: 'GET',
+              url: './resources/php/catPull.php',
+              success: function(response){
+                $('.catList option').not(':first').remove();
+
+                  for(var i = 0; i < response.length; i++){
+                    html = '<option value="' + response[i].cat + '">' + response[i].cat + '</option>';
+                    $('.catList').append(html);
+                };
+
+              }
+            });
+          };
+
           $('.classAdd').submit(function(e){
             var writeData = $('.classAdd');
             $.ajax({
@@ -20,16 +53,12 @@ $(document).ready(function(){
             e.preventDefault();
           });
 
-        //Create a function to populate the table on the page
           function tableData(){
-          //AJAX GET call to get the full database data
             $.ajax({
               type: 'GET',
               url: '/classTracker/resources/php/classTimeline.php',
               success: function(response){
-              //Remove all divs in the skillsList
                 $('.skillsList div').remove();
-              //Create a function that finds all option tags in category id except the first and iterates through them
                 $('#category').find('option').not(':first').each(function(){
                   var className = $(this).text();
                   counter = function(classCat){

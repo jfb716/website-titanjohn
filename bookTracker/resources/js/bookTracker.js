@@ -4,7 +4,43 @@ $(document).ready(function(){
           if(key != 'black'){
             $('.btn').remove();
           };
+
+          yearList();
+          catList();
           bookData();
+
+          function yearList(){
+            $.ajax({
+              type: 'GET',
+              url: './resources/php/yearPull.php',
+              success: function(response){
+                $('.yearList1 option').not(':first').remove();
+                $('.yearList2 option').not(':first').remove();
+
+                  for(var i = 0; i < response.length; i++){
+                    html = '<option value="' + response[i].year + '">' + response[i].year + '</option>';
+                    $('.yearList1, .yearList2').append(html);
+                };
+
+              }
+            });
+          };
+
+          function catList(){
+            $.ajax({
+              type: 'GET',
+              url: './resources/php/catPull.php',
+              success: function(response){
+                $('.catList option').not(':first').remove();
+
+                  for(var i = 0; i < response.length; i++){
+                    html = '<option value="' + response[i].cat + '">' + response[i].cat + '</option>';
+                    $('.catList').append(html);
+                };
+
+              }
+            });
+          };
 
           function bookData(){
             $.ajax({
