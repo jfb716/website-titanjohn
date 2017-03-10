@@ -3,6 +3,7 @@
 
 $(document).ready(function(){
         $('.idCol').hide();
+        $('tr:odd').addClass('bg-primary');
 
         $('.sites td').blur(function(){
           var text = $(this).text();
