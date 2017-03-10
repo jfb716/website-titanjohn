@@ -57,11 +57,11 @@
         <table class="table table-striped table-inverse">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Site Name</th>
-              <th>Site URL</th>
-              <th>Current Use</th>
-              <th>Future Use</th>
+              <th id="id" class="idCol">ID</th>
+              <th id="siteName">Site Name</th>
+              <th id="siteURL">Site URL</th>
+              <th id="current">Current Use</th>
+              <th id="future">Future Use</th>
             </tr>
           </thead>
             <tbody class="sites">
@@ -76,13 +76,18 @@
                 }
 
                 while ($row = mysqli_fetch_array($result)) {
-                  echo "<tr>";
+
+                  echo '<tr>';
                   foreach ($all_property as $item) {
-                      echo '<td contenteditable="true" id="test">' . $row[$item] . '</td>';
+
+                    if($row[0] == $row[$item]){
+                      echo '<td class="idCol" id="' . $row[0] . '">' . $row[$item] . '</td>';
+                    } else {
+                      echo '<td contenteditable="true" id="' . $row[0] . '">' . $row[$item] . '</td>';
+                    }
                   }
                   echo '</tr>';
                 }
-                echo "</table>";
 
 
                 mysqli_close($con);
