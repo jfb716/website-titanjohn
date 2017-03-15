@@ -3,7 +3,7 @@
 
 $(document).ready(function(){
         $('.idCol').hide();
-        $('tr:odd').addClass('bg-primary');
+        $('tr:odd').addClass('bg-success');
 
         $('.sites td').blur(function(){
           var text = $(this).text();

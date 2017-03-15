@@ -54,14 +54,14 @@
     </header>
     <body>
       <div class="jumbotron container">
-        <table class="table table-striped table-inverse table-bordered">
+        <table class="table table-striped table-inverse table-bordered table-responsive">
           <thead>
             <tr>
               <th id="id" class="idCol">ID</th>
               <th id="siteName" class="h4"><u>Site Name</u></th>
               <th id="siteURL" class="h4"><u>Site URL</u></th>
-              <th id="current" class="h4"><u>Current Use</u></th>
-              <th id="future" class="h4"><u>Future Use</u></th>
+              <th id="current" class="h4" style="width:50%"><u>Current Use</u></th>
+              <th id="future" class="h4" style="width:50%"><u>Future Use</u></th>
             </tr>
           </thead>
             <tbody class="sites">
