@@ -120,7 +120,7 @@ $(document).ready(function(){
 
             $.ajax({
               type: 'GET',
-              url: '/classTracker/resources/php/pageOne.php',
+              url: '/classTracker/resources/php/pagination.php',
               success: function(response){
 
                   $('#classTable tr').not(':first').remove();
@@ -135,9 +135,11 @@ $(document).ready(function(){
 
         $('.pagination').click(function(event){
           var pageInsert = event.target.id;
+          var pageNum = $(event.target).html();
             $.ajax({
               type: 'GET',
-              url: '/classTracker/resources/php/' + pageInsert + '.php',
+              url: '/classTracker/resources/php/pagination.php',
+              data: {page: pageNum},
               success: function(response){
                   $('#classTable tr').not(':first').remove();
                   var html = '';

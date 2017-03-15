@@ -1,14 +1,20 @@
 <?php
 include 'conn.php';
 
-$sql = $conn->prepare("INSERT INTO classTracker (class, site, category, complete) VALUES (?,?,?,?)");
-$sql->bind_param("sssi",$_POST['class'],$_POST['site'], $_POST['category'], $_POST['complete']);
+header('content-type: application/json');
 
-if($sql->execute()){
-  echo 'success';
-}else{
-  echo 'error '. mysqli_error($conn);
+$class = $_POST['class'];
+$site = $_POST['site'];
+$category = $_POST['category'];
+$complete = $_POST['complete'];
+
+$sql = "INSERT INTO classTracker (class, site, category, complete)";
+$sql .= " VALUES ('$class', '$site', '$category', '$complete')";
+
+$result = mysqli_query($conn, $sql);
+
+if (!$result) {
+  die("Query Failed: " . mysqli_error());
 }
 
-$sql->close();
 ?>
