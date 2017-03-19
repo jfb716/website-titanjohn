@@ -46,8 +46,6 @@ while ($row = mysqli_fetch_assoc($result)) {
   $myArray[] = $row;
 }
 
-mysqli_close($conn);
-
 $json = json_encode($myArray);
 
 echo $json;
