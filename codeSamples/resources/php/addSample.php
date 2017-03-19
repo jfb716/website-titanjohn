@@ -1,15 +1,16 @@
 <?php
-$conn = new mysqli("localhost","titanjohn","bull1607","titanJohn");
-if($conn->connect_error){die("error");}
+include('conn.php');
 
-$sql = $conn->prepare("INSERT INTO codeSamples (title, cat, url) VALUES (?,?,?)");
-$sql->bind_param("sss",$_POST['title'],$_POST['cat'], $_POST['url']);
+$title = $_POST['title'];
+$cat = $_POST['cat'];
+$url = $_POST['url'];
 
-if($sql->execute()){
-  echo 'success';
-}else{
-  echo 'error '. mysqli_error($conn);
+$sql = "INSERT INTO codeSamples (title, cat, url)";
+$sql .= " VALUES ('$title', '$cat', '$url')";
+
+$result = mysqli_query($conn, $sql);
+
+if(!$reult) {
+  die("Query Failed: " . mysqli_error());
 }
-
-$sql->close();
 ?>

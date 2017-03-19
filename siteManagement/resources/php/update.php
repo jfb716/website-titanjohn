@@ -1,6 +1,5 @@
 <?php
-$conn = new mysqli("localhost","titanjohn","bull1607","titanJohn");
-if($conn->connect_error){die("error");}
+include('conn.php');
 
 $id = $_POST['id'];
 $text = $_POST['text'];
@@ -12,6 +11,4 @@ if ($conn->query($sql) === TRUE) {
 } else {
     echo "Error updating record: " . $conn->error;
 }
-
-$conn->close();
 ?>

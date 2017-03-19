@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost","titanjohn","bull1607","titanJohn") or die ("Error".mysqli_error($conn));
+include('conn.php');
 
 header('content-type: application/json');
 
@@ -9,8 +9,6 @@ $myArray = array();
 while ($row = mysqli_fetch_assoc($result)) {
   $myArray[] = $row;
 }
-
-mysqli_close($conn);
 
 $json = json_encode($myArray);
 

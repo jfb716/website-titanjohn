@@ -1,15 +1,19 @@
 <?php
-$conn = new mysqli("localhost","titanjohn","bull1607","titanJohn");
-if($conn->connect_error){die("error");}
+include('conn.php');
 
-$sql = $conn->prepare("INSERT INTO bookTracker (title, auth, isbn, cat, byear, ryear) VALUES (?,?,?,?,?,?)");
-$sql->bind_param("ssssii",$_POST['title'],$_POST['auth'], $_POST['isbn'], $_POST['cat'], $_POST['byear'], $_POST['ryear']);
+$title = $_POST['title'];
+$auth = $_POST['auth'];
+$isbn = $_POST['isbn'];
+$cat = $_POST['cat'];
+$byear = $_POST['byear'];
+$ryear = $_POST['ryear'];
 
-if($sql->execute()){
-  echo 'success';
-}else{
-  echo 'error '. mysqli_error($conn);
+$sql = "INSERT INTO bookTracker (title, auth, isbn, cat, byear, ryear)";
+$sql .= " VALUES ('$title', '$auth', '$isbn', '$cat', '$byear', '$ryear')";
+
+$result = mysqli_query($conn, $sql);
+
+if(!$result) {
+  die("Query Failed: " . mysqli_error());
 }
-
-$sql->close();
 ?>
