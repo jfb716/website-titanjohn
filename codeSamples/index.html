@@ -55,6 +55,24 @@
     <body>
       <div class="jumbotron container">
         <legend class="h1 text-center bg-inverse text-white rounded-top">Code Samples</legend>
+        <div class="row">
+          <div class="col-1">
+
+          </div>
+          <div class="col-5">
+            <div class="input-group">
+              <span class="input-group-addon bg-inverse text-white">Title</span>
+              <input type="text" class="form-control" placeholder="Search..." onkeyup="searchFunction()" id="searchInput">
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="input-group">
+              <span class="input-group-addon bg-inverse text-white">Category</span>
+              <input type="text" class="form-control" placeholder="Search..." onkeyup="searchFunction2()" id="searchInput2">
+            </div>
+          </div>
+        </div>
+        <br>
         <div class="list-group">
         </div>
       </div>
@@ -92,7 +110,25 @@
         </form>
       </div>
 
-
+      <script>
+      function searchFunction() {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementsByClassName("list-group");
+        tr = table.getElementsByTagName("a");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("a")[0];
+          if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
+      </script>
 
     </body>
 
