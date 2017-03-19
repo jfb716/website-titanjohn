@@ -27,17 +27,11 @@ $(document).ready(function(){
               type: 'GET',
               url: './resources/php/samplePull.php',
               success: function(response){
-                $('.list-group a').remove();
-                $('.books br').remove();
+                $('tbody tr').remove();
 
                   for(var i = 0; i < response.length; i++){
-                    if(i % 2 !== 0){
-                      var style = "list-group-item-info";
-                    } else {
-                      style = " ";
-                    }
-                    html = '<a href="' + response[i].url + '" class="list-group-item list-group-item-action justify-content-between ' + style + '" target="_blank">' + response[i].title + '<span class="badge badge-default badge-pill">' + response[i].cat + '</span>' + '</a>';
-                    $('.list-group').append(html);
+                    html = '<tr><td><a href="' + response[i].url + '" class="list-group-item list-group-item-action justify-content-between" target="_blank">' + response[i].title + '<span class="badge badge-default badge-pill">' + response[i].cat + '</span>' + '</a></td></tr>';
+                    $('tbody').append(html);
 
                 };
 
@@ -60,6 +54,6 @@ $(document).ready(function(){
             e.preventDefault();
           });
 
-        
+
 
 });
