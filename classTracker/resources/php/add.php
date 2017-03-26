@@ -1,8 +1,6 @@
 <?php
 include 'conn.php';
 
-header('content-type: application/json');
-
 $class = $_POST['class'];
 $site = $_POST['site'];
 $category = $_POST['category'];
@@ -15,6 +13,7 @@ $result = mysqli_query($conn, $sql);
 
 if (!$result) {
   die("Query Failed: " . mysqli_error());
+} else {
+   echo 'success';
 }
-
 ?>
