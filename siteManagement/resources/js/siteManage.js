@@ -1,6 +1,4 @@
 
-
-
 $(document).ready(function(){
         $('.idCol').hide();
         $('tr:odd').addClass('alert bg-danger');
