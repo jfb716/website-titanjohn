@@ -1,2 +1,4 @@
 # website-titanjohn
-Test Website
+
+
+![alt text](coding_plan.jpg)
