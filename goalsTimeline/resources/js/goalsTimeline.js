@@ -37,16 +37,16 @@ $(document).ready(function(){
               if (cat1 === cat2) {
                 switch (yer) {
                   case "2015":
-                    fif = "btn-success";
+                    fif = "btn-info";
                     break;
                   case "2016":
-                    six = "btn-success";
+                    six = "btn-info";
                     break;
                   case "2017":
-                    sev = "btn-success";
+                    sev = "btn-info";
                     break;
                   case "2018":
-                    eig = "btn-success";
+                    eig = "btn-info";
 
                 }
               };
