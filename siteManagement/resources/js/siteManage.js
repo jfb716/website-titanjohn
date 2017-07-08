@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
         $('.idCol').hide();
-        $('tr:odd').addClass('alert bg-danger');
+        $('tr:odd').addClass('alert bg-info');
 
         $('.sites td').blur(function(){
           var text = $(this).text();
