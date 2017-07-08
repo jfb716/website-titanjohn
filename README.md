@@ -1,4 +1,4 @@
 # website-titanjohn
 
 
-![alt text](resources/images/coding_plan.jpg)
+![alt text](/resources/images/coding_plan.jpg)
