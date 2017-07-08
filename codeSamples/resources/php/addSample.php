@@ -12,7 +12,5 @@ $result = mysqli_query($conn, $sql);
 
 if(!$reult) {
   die("Query Failed: " . mysqli_error());
-} else {
-  echo "success";
 }
 ?>

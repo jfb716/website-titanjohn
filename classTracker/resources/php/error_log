@@ -1,0 +1,2 @@
+[26-Mar-2017 21:03:27 UTC] PHP Fatal error:  Call to a member function close() on a non-object in /home/johnfblack/public_html/domains/titanjohn.com/classTracker/resources/php/add.php on line 21
+[26-Mar-2017 21:05:15 UTC] PHP Fatal error:  Call to a member function close() on a non-object in /home/johnfblack/public_html/domains/titanjohn.com/classTracker/resources/php/add.php on line 21
