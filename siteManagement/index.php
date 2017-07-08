@@ -61,7 +61,7 @@
               <th id="siteName" class="h4"><u>Site Name</u></th>
               <th id="siteURL" class="h4"><u>Site URL</u></th>
               <th id="current" class="h4" style="width:50%"><u>Current Use</u></th>
-              <th id="future" class="h4" style="width:50%"><u>Future Use</u></th>
+              <th id="future" class="h4" style="width:50%"><u>Info</u></th>
             </tr>
           </thead>
             <tbody class="sites">
