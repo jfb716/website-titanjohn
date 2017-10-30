@@ -69,7 +69,7 @@ $(document).ready(function(){
 
     //CPM Calculation
     cpm2 = cpm1 * viewability;
-    finalCpm = cpm2 * format;
+    finalCpm = (cpm2 * format);
     console.log("CPM: " + finalCpm);
     $(".cpmPill").text("$" + finalCpm.toFixed(2));
 
@@ -82,33 +82,110 @@ $(document).ready(function(){
     //Competitiveness Score
     var compScore;
 
-      switch (format = '0.5') {
+    if (format === .5) {
+      switch (true) {
         case (finalCpm < .5):
           compScore = .1;
           break;
         case (finalCpm >= .5 && finalCpm < .75):
-          compScore = .3;
+          compScore = .2;
           break;
         case (finalCpm >= .75 && finalCpm < 1):
-          compScore = .5;
+          compScore = .25;
           break;
         case (finalCpm >= 1 && finalCpm < 1.25):
-          compScore = .7;
+          compScore = .3;
           break;
         case (finalCpm >= 1.25 && finalCpm < 1.5):
-          compScore = .8;
+          compScore = .4;
           break;
         case (finalCpm >= 1.5 && finalCpm < 1.75):
-          compScore = .9;
+          compScore = .5;
           break;
         case (finalCpm >= 1.75 && finalCpm < 2):
-          compScore = 1;
+          compScore = .6;
           break;
       }
+    } else if (format === 1) {
+      switch (true) {
+        case (finalCpm < .5):
+          compScore = .1;
+          break;
+        case (finalCpm >= .5 && finalCpm < .75):
+          compScore = .15;
+          break;
+        case (finalCpm >= .75 && finalCpm < 1):
+          compScore = .2;
+          break;
+        case (finalCpm >= 1 && finalCpm < 1.25):
+          compScore = .25;
+          break;
+        case (finalCpm >= 1.25 && finalCpm < 1.5):
+          compScore = .3;
+          break;
+        case (finalCpm >= 1.5 && finalCpm < 1.75):
+          compScore = .35;
+          break;
+        case (finalCpm >= 1.75 && finalCpm < 2):
+          compScore = .4;
+          break;
+        case (finalCpm >= 2 && finalCpm < 2.25):
+          compScore = .5;
+          break;
+        case (finalCpm >= 2.25 && finalCpm < 2.50):
+          compScore = .55;
+          break;
+        case (finalCpm >= 2.50 && finalCpm < 2.75):
+          compScore = .60;
+          break;
+        case (finalCpm >= 2.75 && finalCpm < 3.00):
+          compScore = .65;
+          break;
+        case (finalCpm >= 3.25 && finalCpm < 3.50):
+          compScore = .70;
+          break;
+        case (finalCpm >= 3.50 && finalCpm < 3.75):
+          compScore = .75;
+          break;
+        case (finalCpm >= 3.75 && finalCpm < 4.00):
+          compScore = .80;
+          break;
+        case (finalCpm >= 4.00 && finalCpm < 4.25):
+          compScore = .85;
+          break;
+          case (finalCpm >= 4.25 && finalCpm < 4.50):
+            compScore = .9;
+            break;
+      }
+    }
 
     console.log("Competitiveness: " + compScore);
 
+    //Win Rate Calculation
+    predWins = availableRequests * compScore;
+    winPerc = (predWins / bidReq) * 100;
+    console.log("Win Rate: " + winPerc);
+    $(".winPill").text(winPerc.toFixed() + "%");
 
+    //Daily Revenue Calculation
+    dailyRev1 = (predWins * finalCpm)/1000;
+    dailyRev = dailyRev1.toFixed();
+    console.log("Daily Revenue: " + dailyRev);
+    $(".revPill").text("$" + dailyRev);
+
+    //Onboard Calculation
+    var onboardPub;
+    if (dailyRev >= 1000) {
+      onboardPub = "YES";
+      $(".onPill").removeClass("badge-danger");
+      $(".onPill").addClass("badge-success");
+    } else {
+      onboardPub = "NO";
+      $(".onPill").removeClass("badge-success");
+      $(".onPill").addClass("badge-danger");
+    }
+    console.log("Onboard Pub: " + onboardPub);
+    $(".onPill").text(onboardPub);
   });
 
 });
