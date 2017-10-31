@@ -118,25 +118,25 @@ $(document).ready(function(){
     if (format === .5) {
       switch (true) {
         case (finalCpm < .5):
-          compScore = .1;
+          compScore = .01;
           break;
         case (finalCpm >= .5 && finalCpm < .75):
-          compScore = .2;
+          compScore = .1;
           break;
         case (finalCpm >= .75 && finalCpm < 1):
-          compScore = .25;
+          compScore = .15;
           break;
         case (finalCpm >= 1 && finalCpm < 1.25):
-          compScore = .3;
+          compScore = .2;
           break;
         case (finalCpm >= 1.25 && finalCpm < 1.5):
-          compScore = .4;
+          compScore = .25;
           break;
         case (finalCpm >= 1.5 && finalCpm < 1.75):
-          compScore = .5;
+          compScore = .3;
           break;
         case (finalCpm >= 1.75 && finalCpm < 2):
-          compScore = .6;
+          compScore = .4;
           break;
       }
     } else if (format === 1) {
