@@ -21,49 +21,49 @@ $(document).ready(function(){
 
     switch (clickRate) {
       case 1:
-        cpm1 = 1.25;
+        cpm1 = .50;
         break;
       case 2:
-        cpm1 = 1.50;
+        cpm1 = .75;
         break;
       case 3:
-        cpm1 = 1.75;
+        cpm1 = 1.25;
         break;
       case 4:
-        cpm1 = 2.00;
+        cpm1 = 1.75;
         break;
       case 5:
-        cpm1 = 2.25;
+        cpm1 = 2.00;
         break;
       case 6:
         cpm1 = 2.50;
         break;
       case 7:
-        cpm1 = 2.75;
-        break;
-      case 8:
         cpm1 = 3.00;
         break;
-      case 9:
-        cpm1 = 3.25;
-        break;
-      case 10:
+      case 8:
         cpm1 = 3.50;
         break;
-      case 11:
+      case 9:
         cpm1 = 3.75;
         break;
-      case 12:
-        cpm1 = 4.00;
-        break;
-      case 13:
+      case 10:
         cpm1 = 4.25;
         break;
+      case 11:
+        cpm1 = 4.75;
+        break;
+      case 12:
+        cpm1 = 5.25;
+        break;
+      case 13:
+        cpm1 = 5.50;
+        break;
       case 14:
-        cpm1 = 4.50;
+        cpm1 = 5.75;
         break;
       case 15:
-        cpm1 = 4.75;
+        cpm1 = 6.00;
         break;
     };
 
@@ -73,8 +73,41 @@ $(document).ready(function(){
     console.log("CPM: " + finalCpm);
     $(".cpmPill").text("$" + finalCpm.toFixed(2));
 
+    //Pice Floor Demand Weight
+    var floorWeight;
+    switch (true) {
+      case (priceFloor === 0):
+        floorWeight = .000001;
+        break;
+      case (priceFloor === .25):
+        floorWeight = .1;
+        break;
+      case (priceFloor === .50):
+        floorWeight = .2;
+        break;
+      case (priceFloor === .75):
+        floorWeight = .3;
+        break;
+      case (priceFloor === 1):
+        floorWeight === .4;
+        break;
+      case (priceFloor === 1.25):
+        floorWeight = .5;
+        break;
+      case (priceFloor === 1.50):
+        floorWeight = .6;
+        break;
+      case (priceFloor === 1.75):
+        floorWeight = .7;
+        break;
+      case (priceFloor === 2):
+        floorWeight = .8;
+        break;
+    }
+    console.log("Demand Weight: " + floorWeight);
+
     //Available Requests Calculation
-    availableRequests = (bidReq * (1 - directSold)) * matchRate;
+    availableRequests = ((bidReq * (1 - directSold)) * matchRate) * (1 - floorWeight);
     console.log("Available Requests: " + availableRequests.toFixed());
     availReq = Number(availableRequests.toFixed()).toLocaleString('en', {minimumFractionDigits: 0});
     $(".reqPill").text(availReq);
@@ -109,53 +142,62 @@ $(document).ready(function(){
     } else if (format === 1) {
       switch (true) {
         case (finalCpm < .5):
-          compScore = .1;
+          compScore = .01;
           break;
         case (finalCpm >= .5 && finalCpm < .75):
-          compScore = .15;
+          compScore = .05;
           break;
         case (finalCpm >= .75 && finalCpm < 1):
-          compScore = .2;
+          compScore = .1;
           break;
         case (finalCpm >= 1 && finalCpm < 1.25):
-          compScore = .25;
+          compScore = .15;
           break;
         case (finalCpm >= 1.25 && finalCpm < 1.5):
-          compScore = .3;
+          compScore = .2;
           break;
         case (finalCpm >= 1.5 && finalCpm < 1.75):
-          compScore = .35;
+          compScore = .25;
           break;
         case (finalCpm >= 1.75 && finalCpm < 2):
-          compScore = .4;
+          compScore = .3;
           break;
         case (finalCpm >= 2 && finalCpm < 2.25):
-          compScore = .5;
+          compScore = .35;
           break;
         case (finalCpm >= 2.25 && finalCpm < 2.50):
-          compScore = .55;
+          compScore = .40;
           break;
         case (finalCpm >= 2.50 && finalCpm < 2.75):
-          compScore = .60;
+          compScore = .45;
           break;
         case (finalCpm >= 2.75 && finalCpm < 3.00):
-          compScore = .65;
+          compScore = .50;
           break;
-        case (finalCpm >= 3.25 && finalCpm < 3.50):
-          compScore = .70;
+        case (finalCpm >= 3.00 && finalCpm < 3.50):
+          compScore = .55;
           break;
         case (finalCpm >= 3.50 && finalCpm < 3.75):
-          compScore = .75;
+          compScore = .60;
           break;
         case (finalCpm >= 3.75 && finalCpm < 4.00):
-          compScore = .80;
+          compScore = .65;
           break;
         case (finalCpm >= 4.00 && finalCpm < 4.25):
+          compScore = .70;
+          break;
+        case (finalCpm >= 4.25 && finalCpm < 4.50):
+          compScore = .75;
+          break;
+        case (finalCpm >= 4.50 && finalCpm < 5.00):
+          compScore = .80;
+          break;
+        case (finalCpm >= 5.00 && finalCpm < 5.50):
           compScore = .85;
           break;
-          case (finalCpm >= 4.25 && finalCpm < 4.50):
-            compScore = .9;
-            break;
+        case (finalCpm >= 5.50 && finalCpm < 6.76):
+          compScore = .90;
+          break;
       }
     }
 
@@ -175,7 +217,7 @@ $(document).ready(function(){
 
     //Onboard Calculation
     var onboardPub;
-    if (dailyRev >= 1000) {
+    if (dailyRev >= 500) {
       onboardPub = "YES";
       $(".onPill").removeClass("badge-danger");
       $(".onPill").addClass("badge-success");
