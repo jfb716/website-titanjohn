@@ -13,6 +13,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/cheatSheet/resources/css/cheatSheet.css">
         <script src="resources/js/prediction.js"></script>
+        <script src="resources/js/download.js"></script>
     </head>
     <header>
       <div class="container">
@@ -191,7 +192,7 @@
                     </select>
                   </div>
                 </div>
-                <button class="btn btn-primary offset-sm-3 col-sm-6" type="button">Enter</button>
+                <button class="btn btn-primary offset-sm-3 col-sm-6 predictionButton" type="button">Enter</button>
               </form>
             </div>
             <div class="col-sm-1"></div>
@@ -224,6 +225,14 @@
           <div class="col-sm-1"></div>
         </div>
       </div>
+      <div class="alert alert-info container"></div>
+        <div class="downloadDiv">    
+            <textarea id="txt" class='txtarea'></textarea>
+            <button class="btn btn-primary csvButton" type="button">Download CSV</button>
+        
+        </div>
+    
+    
       <div class="alert alert-info container"></div>
     </body>
 

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  $('button').click(function(){
+  $('.predictionButton').click(function(){
 
     bidReq = parseInt($('#bidRequests').val());
     matchRate = parseFloat($('#matchRate').val());
