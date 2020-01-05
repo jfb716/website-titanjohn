@@ -3,7 +3,7 @@ include 'conn.php';
 
 header('content-type: application/json');
 
-$sql = "select * from categories";
+$sql = "select * from categories ORDER BY `categories`.`cat` ASC";
 $result = mysqli_query($conn, $sql) or die ("Error".mysqli_error($conn));
 $myArray = array();
 while ($row = mysqli_fetch_assoc($result)) {
