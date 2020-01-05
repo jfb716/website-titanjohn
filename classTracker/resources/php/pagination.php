@@ -39,7 +39,7 @@ switch ($pageNum) {
 }
 
 
-$sql = "select * from classTracker limit 10 offset " . $pageNum;
+$sql = "select * from classTracker ORDER BY `classTracker`.`complete` DESC limit 10 offset " . $pageNum;
 $result = mysqli_query($conn, $sql) or die ("Error".mysqli_error($conn));
 $myArray = array();
 while ($row = mysqli_fetch_assoc($result)) {

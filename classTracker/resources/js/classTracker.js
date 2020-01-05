@@ -94,7 +94,7 @@ $(document).ready(function(){
                     case "2017":
                       styleAdd = "warning";
                       break;
-                    case "2018":
+                    case "2020":
                       styleAdd = "danger";
                       break;
                     default:

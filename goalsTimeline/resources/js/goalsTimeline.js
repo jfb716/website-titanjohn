@@ -30,6 +30,8 @@ $(document).ready(function(){
             six = ' ';
             sev = ' ';
             eig = ' ';
+            nin = ' ';
+            twe = ' ';
 
             for (var j = 0; j < response.length; j++) {
               cat2 = response[j].category;
@@ -47,13 +49,19 @@ $(document).ready(function(){
                     break;
                   case "2018":
                     eig = "btn-info";
-
+                    break;
+                  case "2019":
+                    nin = "btn-info";
+                    break;
+                  case "2020":
+                    twe = "btn-info";
+                    break;
                 }
               };
             }
 
                 var html = '';
-                html += '<tr><td>' + cat1 + '</td><td class="' + fif + '"></td><td class="' + six + '"></td><td class="' + sev + '"></td><td class="' + eig +'"></td></tr>';
+                html += '<tr><td>' + cat1 + '</td><td class="' + fif + '"></td><td class="' + six + '"></td><td class="' + sev + '"></td><td class="' + eig +'"></td><td class="' + nin +'"></td><td class="' + twe +'"></td></tr>';
 
                 $('.table tbody').append(html);
 
